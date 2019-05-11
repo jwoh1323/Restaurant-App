@@ -16,31 +16,62 @@
 </head>
 <body>
 
-  <section id="galleryone" class="tm-section">
-    <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Noodles</h2></header>
-    <div class="tm-gallery-container tm-gallery-1">
-        <div class="tm-img-container tm-img-container-1">
-            <a href="img/neaty-03.jpg"><img src="img/neaty-03.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
+<div class="container">
+    <section id="Appetizers" class="tm-section">
+        <div class="row">     
+            <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Appetizers</h2></header>
+            <div class="tm-gallery-container tm-gallery-1">
+                <div class="tm-img-container tm-img-container-1">
+                    <a href="../static/img/app1.jpg"><img src="../static/img/app1.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
+                </div>
+                <div class="tm-img-container tm-img-container-1">
+                    <a href="../static/img/na.gif"><img src="../static/img/na.gif" alt="Image" class="img-fluid tm-img-tn"></a>    
+                </div>
+                <div class="tm-img-container tm-img-container-1">
+                        <a href="../static/img/na.gif"><img src="../static/img/na.gif"" alt="Image" class="img-fluid tm-img-tn"></a>    
+                </div>   
+                <div class="tm-img-container tm-img-container-1">
+                        <a href="../static/img/app2.jpg"><img src="../static/img/app2.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
+                </div>  
+            </div>
         </div>
-        <div class="tm-img-container tm-img-container-1">
-            <a href="img/neaty-04.jpg"><img src="img/neaty-04.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
-        </div>
-        <div class="tm-img-container tm-img-container-1">
-            <a href="img/neaty-05.jpg"><img src="img/neaty-05.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
-        </div>
-        <div class="tm-img-container tm-img-container-1">
-            <a href="img/neaty-06.jpg"><img src="img/neaty-06.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
-        </div>
-        <div class="tm-img-container tm-img-container-1">
-            <a href="img/neaty-07.jpg"><img src="img/neaty-07.jpg" alt="Image" class="img-fluid tm-img-tn"></a>    
-        </div>                                    
-    </div>
-</section>
-
-
+    </section>                                
+ 
+</div>
 
       <script src="../static/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
       <script src="../static/js/jquery.magnific-popup.min.js"></script>     <!-- Magnific pop-up (http://dimsemenov.com/plugins/magnific-popup/) -->
-      <script src="../static/js/jquery.singlePageNav.min.js"></script>    
+      <script src="../static/js/jquery.singlePageNav.min.js"></script>   
+      <script>     
+            $(document).ready(function(){
+
+
+                $('.tm-gallery-1').magnificPopup({
+                  delegate: 'a', // child items selector, by clicking on it popup will open
+                  type: 'image',
+                  gallery: {enabled:true}
+                  // other options
+                }); 
+
+                $('.tm-gallery-2').magnificPopup({
+                  delegate: 'a', // child items selector, by clicking on it popup will open
+                  type: 'image',
+                  gallery: {enabled:true}
+                  // other options
+                }); 
+
+                $('.tm-gallery-3').magnificPopup({
+                  delegate: 'a', // child items selector, by clicking on it popup will open
+                  type: 'image',
+                  gallery: {enabled:true}
+                  // other options
+                }); 
+
+                $('.tm-current-year').text(new Date().getFullYear());                
+            });
+        </script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -27,7 +27,10 @@ a:focus {
 	color: white;
 }
 
-.tm-blue-text {	color: #808B96; }
+.tm-blue-text {	
+	color: #808B96; 
+	padding-left: 50px;
+}
 .tm-blue-bg a {	color: white; }
 
 .tm-site-name {
@@ -87,9 +90,12 @@ p { line-height: 2; }
 	overflow: auto;
 	margin-left: -5px;
 	margin-right: -5px;
+	padding-left: 170px;
 }
 
-.tm-img-container {	float: left; }
+.tm-img-container {	
+	float: left; 
+}
 
 .tm-img-container-1,
 .tm-img-container-2,
