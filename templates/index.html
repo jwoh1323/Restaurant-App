@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/magnific-popup.css">
     <link rel="stylesheet" href="../static/css/templatemo-style.css">
+    
 </head>
 
     <body>        
@@ -29,16 +30,16 @@
                         <nav class="tm-main-nav">
                             <ul class="tm-main-nav-ul">
                                 <li class="tm-nav-item">
-                                    <a href="#welcome" class="tm-nav-item-link">Home</a>
+                                    <a href="{{ url_for('home') }}" class="tm-nav-item-link">Home</a>
                                 </li>
                                 <li class="tm-nav-item">
-                                    <a href="#manu" class="tm-nav-item-link">Menu</a>
+                                    <a href="#menu" class="tm-nav-item-link">Menu</a>
                                 </li>
                                 <li class="tm-nav-item">
                                     <a href="#about" class="tm-nav-item-link">About Us</a>
                                 </li>
                                 <li class="tm-nav-item">
-                                    <a href="#contact" class="tm-nav-item-link">Contact Us</a>
+                                    <a href="{{ url_for('contact') }}" class="tm-nav-item-link">Contact Us</a>
                                 </li>
                             </ul>
                         </nav>                                         
