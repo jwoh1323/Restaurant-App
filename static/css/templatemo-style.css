@@ -50,11 +50,11 @@ a:focus {
 	padding-left: 0;
 }
 
-.tm-section { margin-bottom: 60px; }
+.tm-section { margin-bottom: 40px; }
 .tm-welcome-title {	font-size: 2.4rem; }
 .tm-section-title {	font-size: 2.2rem; }
-.tm-content-div { padding: 40px; }
-.tm-margin-b-45 { margin-bottom: 45px; }
+.tm-content-div { padding: 20px; }
+.tm-margin-b-40 { margin-bottom: 40px; }
 .tm-margin-b-30 { margin-bottom: 30px; }
 p { line-height: 2; }
 
@@ -198,9 +198,9 @@ textarea:-ms-input-placeholder {
 	    padding-bottom: 50px;
 	}
 
-	.tm-section { margin-bottom: 100px; }
+	.tm-section { margin-bottom: 50px; }
 
-	.tm-content-div { padding: 80px 40px 30px 80px;	}
+	.tm-content-div { padding: 30px 30px 30px 30px;}
 
 	.tm-img-container-1 {
 		margin-bottom: 10px;
