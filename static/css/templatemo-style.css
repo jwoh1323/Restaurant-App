@@ -23,13 +23,13 @@ a:focus {
 .tm-left-right-container { width: 100%; }
 
 .tm-blue-bg {
-	background-color: #808B96  ;
+	background-color: #808B96 ;
 	color: white;
 }
 
 .tm-blue-text {	
 	color: #808B96; 
-	padding-left: 50px;
+	padding-left: 20px;
 }
 .tm-blue-bg a {	color: white; }
 
