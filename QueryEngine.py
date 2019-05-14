@@ -11,10 +11,12 @@ class QueryEngine:
     if(len(self.host + self.user + self.password + self.database) == 0):
       self.setup_default()
   
+  
   def setup_default(self):
     self.host = "rice3.c099fllpyrsm.us-west-2.rds.amazonaws.com"
     self.user = "dxvo"
     self.password = "bank4you"
+    self.database = "restaurant"
 
   
   def connect(self):

@@ -4,7 +4,6 @@ from wtforms.validators import DataRequired,Length,Email,EqualTo,NumberRange,Opt
 from wtforms.widgets import PasswordInput, CheckboxInput, ListWidget, html_params, HTMLString
 from wtforms.fields.html5 import DateField
 from QueryEngine import QueryEngine
-from datetime import date
 import string
 qe = QueryEngine()
 qe.setup_default()
