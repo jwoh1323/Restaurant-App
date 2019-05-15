@@ -72,16 +72,21 @@ input[type=submit]:hover {
 </style>
 </head>
 <body  style = "background-color:black;">
+
 <div class="container">
+
   <div style="text-align:center">
     <h2><Strong>Contact Us</Strong></h2>
-    <p>Swing by for a bowl of soup, or leave us a message!</p>
+    <p>Swing by for some shushi, or leave us a message!</p>
   </div>
+
   <div class="row">
-    <div class="column">
+
+    <div class="column col-lg-4">
       <img src="../static/img/contact.gif" style="width:500px; height:430px; padding-left: 30px;">
     </div>
-    <div class="column">
+
+    <div class="column col-lg-7" style="padding-left:180px;">
       <form action="{{url_for('contact')}}">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
