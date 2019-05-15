@@ -26,14 +26,41 @@ function ready() {
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 
+
 function purchaseClicked() {
     alert('Thank you for your purchase')
     var cartItems = document.getElementsByClassName('cart-items')[0]
+
+    var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+    // var item_name = cartItemNames[0].innerText
+    // console.log(item_name)
+
+
+    var cartRows = cartItems.getElementsByClassName('cart-row')
+
+    // var quantityElement = cartRows[0].getElementsByClassName('cart-quantity-input')[0]
+    // var item_quality = quantityElement.value
+    // console.log(item_quality)
+
+
+    var dict = {}
+
     while (cartItems.hasChildNodes()) {
+        var quantityElement = cartRows[0].getElementsByClassName('cart-quantity-input')[0]
+        var item_name = cartItemNames[0].innerText
+        var item_quality = quantityElement.value
+        dict[item_name] = item_quality;
+
         cartItems.removeChild(cartItems.firstChild)
     }
+
+    console.log(dict)
     updateCartTotal()
+
+
+    // window.location.href = "http://localhost:5000/survey";
 }
+
 
 function removeCartItem(event) {
     var buttonClicked = event.target
@@ -101,3 +128,5 @@ function updateCartTotal() {
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
 }
+
+

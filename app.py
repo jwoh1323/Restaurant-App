@@ -61,21 +61,23 @@ def manager_view():
     return render_template('manager_view.html')
 
 
-@app.route("/test", methods=['GET', 'POST'])
-def test():
-    form = TestForm()
+@app.route("/survey", methods=['GET', 'POST'])
+def survey():
+    form = SurveyForm()
     if form.validate_on_submit():
-        username = form.user.data
-        password = form.password.data
-        qe.connect()
-        query_string = f"INSERT  INTO log_in (UserName,Password_Hash) VALUES('{username}','{password}');"
-        qe.do_query(query_string)
-        qe.commit()
-        qe.disconnect()
+        sex = form.sex.data
+        ethnicity = form.ethnicity.data
+        zipcode = form.zipcode.data
+        age = form.age.data
+        # qe.connect()
+        # query_string = f"INSERT  INTO log_in (UserName,Password_Hash) VALUES('{username}','{password}');"
+        # qe.do_query(query_string)
+        # qe.commit()
+        # qe.disconnect()
+        print(sex,ethnicity,zipcode,age)
+        return "Thank you"
 
-        return "done"
-
-    return render_template('test.html',form=form)
+    return render_template('survey.html',form=form)
 
 
 

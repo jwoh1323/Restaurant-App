@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/43645790/passing-javascript-variable-to-python-flask
+
+
+
+      qe.connect()
+        query_string = f"INSERT  INTO log_in (UserName,Password_Hash) VALUES('{username}','{password}');"
+        qe.do_query(query_string)
+        qe.commit()
+        qe.disconnect()

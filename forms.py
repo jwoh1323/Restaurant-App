@@ -40,8 +40,15 @@ class LoginForm(FlaskForm):
 
 
 
-class TestForm(FlaskForm):
-    user = StringField('Username',
-                        validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+class SurveyForm(FlaskForm):
+    sex = SelectField('Sex', 
+        choices=[('',''),('male','Male'),('female','Female')],
+        validators=[DataRequired(),Length(min = 1)])
+    ethnicity =  SelectField('Ethnicity',
+        choices=[('',''),('W','White'),('AA','African American'),('AI','Asian'),('HI','Hispanic'),('OT','Others')],
+        validators=[DataRequired(),Length(min = 1)])
+
+    age = IntegerField('Age',validators=[DataRequired()])
+    zipcode = IntegerField('Zip code',validators=[DataRequired()])
+
+    submit = SubmitField('Submit')
