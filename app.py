@@ -28,6 +28,7 @@ mail = Mail(app)
 
 
 
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -67,7 +68,7 @@ def test():
         username = form.user.data
         password = form.password.data
         qe.connect()
-        query_string = f"INSERT  INTO log_in (UserName,Password_Hash) VALUES('{username}','{password}')"
+        query_string = f"INSERT  INTO log_in (UserName,Password_Hash) VALUES('{username}','{password}');"
         qe.do_query(query_string)
         qe.commit()
         qe.disconnect()
