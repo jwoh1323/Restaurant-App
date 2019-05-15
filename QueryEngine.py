@@ -13,9 +13,9 @@ class QueryEngine:
   
   
   def setup_default(self):
-    self.host = "rice3.c099fllpyrsm.us-west-2.rds.amazonaws.com"
-    self.user = "dxvo"
-    self.password = "bank4you"
+    self.host = "rice3.mysql.database.azure.com"
+    self.user = "dxvo@rice3"
+    self.password = "Bank5you"
     self.database = "restaurant"
 
   
