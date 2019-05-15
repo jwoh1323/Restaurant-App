@@ -41,6 +41,7 @@ def contact():
 def menu():
     return render_template('menu.html')
 
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -49,8 +50,8 @@ def login():
         password = form.password.data
         if log_in_check.login_check(username, password) == True:
             return redirect(url_for('manager_view'))
-        else:
-            flash('Invalid Account, Check Your Username and Password', 'danger')
+        # else:
+        #     flash('Invalid Account, Check Your Username and Password', 'danger')
     return render_template('login.html',form=form)
 
 
@@ -61,3 +62,8 @@ def manager_view():
 
 if __name__ == '__main__':
     app.run()
+
+
+
+
+
