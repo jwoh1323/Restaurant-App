@@ -68,7 +68,7 @@ function purchaseClicked() {
         console.log(text);
     });
     
-    window.location.href = '/https://ricerest.herokuapp.com/survey';
+    window.location.href = 'https://ricerest.herokuapp.com/survey';
 }
 
 

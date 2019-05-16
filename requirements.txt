@@ -1,12 +1,15 @@
 blinker==1.4
 certifi==2019.3.9
 Click==7.0
+DateTime==4.3
 Flask==1.0.2
+Flask-Login==0.4.1
 Flask-Mail==0.9.1
 Flask-WTF==0.14.2
 gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10.1
+jsonify==0.5
 MarkupSafe==1.1.1
 mysql==0.0.2
 mysql-connector==2.2.9
@@ -16,6 +19,8 @@ pandas==0.24.2
 PyMySQL==0.9.3
 python-dateutil==2.8.0
 pytz==2019.1
+random2==1.0.1
 six==1.12.0
 Werkzeug==0.15.2
 WTForms==2.2.1
+zope.interface==4.6.0
