@@ -54,11 +54,28 @@ function purchaseClicked() {
         cartItems.removeChild(cartItems.firstChild)
     }
 
+
     console.log(dict)
     updateCartTotal()
 
 
-    // window.location.href = "http://localhost:5000/survey";
+
+        // POST to server
+    fetch('/cart', {
+        method: 'POST',
+        body: JSON.stringify(dict)
+    }).then(function (response) { // At this point, Flask has printed our JSON
+        return response.text();
+    }).then(function (text) {
+        console.log('POST response: ');
+        // Should be 'OK' if everything was successful
+        console.log(text);
+    });
+
+
+
+
+    // window.location.href = "http://localhost:5000/cart";
 }
 
 

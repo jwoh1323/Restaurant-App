@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, flash, redirect, request
+from flask import Flask, render_template, url_for, flash, redirect, request,jsonify
 from forms import *
 import forms
 import pandas as pd
@@ -80,6 +80,17 @@ def survey():
     return render_template('survey.html',form=form)
 
 
+@app.route("/cart", methods=['GET', 'POST'])
+def cart():
+    if request.method == 'POST':
+        print('Incoming..')
+        print(request.get_json(force=True))  # parse as JSON
+        return 'Done'
+
+    # GET request
+    else:
+        message = {'greeting':'Hello from Flask!'}
+        return jsonify(message)  # serialize and use JSON headers
 
 if __name__ == '__main__':
     app.run(debug =True)
