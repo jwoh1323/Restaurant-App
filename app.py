@@ -74,7 +74,8 @@ def survey():
         # qe.do_query(query_string)
         # qe.commit()
         # qe.disconnect()
-        #print(sex,ethnicity,zipcode,age,transaction_id)
+        
+        print(sex,ethnicity,zipcode,age,transaction_id)
 
         return "Thank you"
 

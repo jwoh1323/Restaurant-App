@@ -102,25 +102,29 @@
   transition-delay: .2s;
 }
 
+.shop-item-id{
+  color: white;
+}
+
 </style>
 
 </head>
 <body>
 
 <div class="row" style="padding-left: 15px">
-  <a class="btn btn-dark" href="{{ url_for('home') }}" style="color: black; font-size: 30px">Main Page</a>
+  <a class="btn btn-dark" href="{{ url_for('home') }}" style="color: white; font-size: 30px; background: black;"> &#127490 Home Page</a>
 </div>
 
 <br>
 
-<header><h2 class="tm-blue-text tm-section-title tm-margin-b-30"><strong>Appetizers</strong></h2></header>
+<header><h2 class="tm-blue-text tm-section-title tm-margin-b-30"><strong> &#127842 Appetizers</strong></h2></header>
 
 <div class="row" style="padding-left: 25px">
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/app1.jpg" style="width: 120%">
-
+              <span class="shop-item-id"><strong>2</strong></span>
               <span class="shop-item-title"><strong>Gyoza</strong></span>
               <span class="shop-item-price"><strong>$6.99</strong></span>
           
@@ -141,7 +145,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/app2.jpg" style="width: 120%">
-
+              <span class="shop-item-id"><strong>3</strong></span>
               <span class="shop-item-title"><strong>Edamame</strong></span>
               <span class="shop-item-price"><strong>$6.99</strong></span>
           
@@ -161,7 +165,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
-
+              <span class="shop-item-id"><strong>4</strong></span>
               <span class="shop-item-title"><strong>Yakitori</strong></span>
               <span class="shop-item-price"><strong>$4.99</strong></span>
           
@@ -181,7 +185,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
-
+              <span class="shop-item-id"><strong>5</strong></span>
               <span class="shop-item-title"><strong>Spring roll</strong></span>
               <span class="shop-item-price"><strong>$4.99</strong></span>
           
@@ -202,7 +206,7 @@
 <hr>
 <br>
 
-<h5 class="tm-blue-text tm-section-title tm-margin-b-30"><strong>Noodles</strong></h5>
+<h5 class="tm-blue-text tm-section-title tm-margin-b-30"><strong> &#127858 Noodles</strong></h5>
 
 <div class="row" style="padding-left:25px;">
 
@@ -210,7 +214,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
-
+              <span class="shop-item-id"><strong>6</strong></span>
               <span class="shop-item-title"><strong>Hakodate</strong></span>
               <span class="shop-item-price"><strong>$10.99</strong></span>
           
@@ -231,7 +235,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/app3.jpg" style="width: 120%">
-
+              <span class="shop-item-id"><strong>7</strong></span>
               <span class="shop-item-title"><strong>Sapporo</strong></span>
               <span class="shop-item-price"><strong>$12.99</strong></span>
           
@@ -251,7 +255,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/app4.jpg" style="width: 120%">
-
+              <span class="shop-item-id"><strong>8</strong></span>
               <span class="shop-item-title"><strong>Kitakata</strong></span>
               <span class="shop-item-price"><strong>$12.99</strong></span>
           
@@ -272,7 +276,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
-
+              <span class="shop-item-id"><strong>9</strong></span>
               <span class="shop-item-title"><strong>Chuka Soba</strong></span>
               <span class="shop-item-price"><strong>$10.99</strong></span>
           
@@ -298,7 +302,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/app5.jpg" style="width: 120%">
-
+              <span class="shop-item-id"><strong>10</strong></span>
               <span class="shop-item-title"><strong>Tsukemen</strong></span>
               <span class="shop-item-price"><strong>$12.99</strong></span>
           
@@ -318,6 +322,7 @@
     <div class="hovereffect">
         <div class="shop-item">
             <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
+              <span class="shop-item-id"><strong>11</strong></span>
 
               <span class="shop-item-title"><strong>Takayama</strong></span>
               <span class="shop-item-price"><strong>$10.99</strong></span>
@@ -341,13 +346,14 @@
 
 
 
-<h5 class="tm-blue-text tm-section-title tm-margin-b-30"><strong>Sushi</strong></h5>
+<h5 class="tm-blue-text tm-section-title tm-margin-b-30"><strong> &#127857 Sushi</strong></h5>
 
 <div class="row" style="padding-left:25px;">
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
       <div class="hovereffect">
           <div class="shop-item">
               <img class="shop-item-image" src="../static/img/app6.jpg" style="width: 120%">
+                <span class="shop-item-id"><strong>12</strong></span>
 
                 <span class="shop-item-title"><strong>California roll</strong></span>
                 <span class="shop-item-price"><strong>$12.99</strong></span>
@@ -367,8 +373,8 @@
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
       <div class="hovereffect">
           <div class="shop-item">
-              <img class="shop-item-image" src="../static/img/na.gif"" style="width: 120%">
-
+              <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
+                <span class="shop-item-id"><strong>13</strong></span>
                 <span class="shop-item-title"><strong>Spider roll</strong></span>
                 <span class="shop-item-price"><strong>$10.99</strong></span>
             
@@ -388,7 +394,7 @@
       <div class="hovereffect">
           <div class="shop-item">
               <img class="shop-item-image" src="../static/img/app7.jpg" style="width: 120%">
-
+                <span class="shop-item-id"><strong>14</strong></span>
                 <span class="shop-item-title"><strong>Tuna Sushi</strong></span>
                 <span class="shop-item-price"><strong>$12.99</strong></span>
             
@@ -408,7 +414,7 @@
       <div class="hovereffect">
           <div class="shop-item">
               <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
-
+                <span class="shop-item-id"><strong>15</strong></span>
                 <span class="shop-item-title"><strong>Dynamite roll</strong></span>
                 <span class="shop-item-price"><strong>$10.99</strong></span>
             
@@ -435,7 +441,7 @@
       <div class="hovereffect">
           <div class="shop-item">
               <img class="shop-item-image" src="../static/img/app8.jpg" style="width: 120%">
-
+                <span class="shop-item-id"><strong>16</strong></span>
                 <span class="shop-item-title"><strong>Philadelphia roll</strong></span>
                 <span class="shop-item-price"><strong>$12.99</strong></span>
             
@@ -455,7 +461,7 @@
       <div class="hovereffect">
           <div class="shop-item">
               <img class="shop-item-image" src="../static/img/na.gif" style="width: 120%">
-
+                <span class="shop-item-id"><strong>17</strong></span>
                 <span class="shop-item-title"><strong>Seattle roll</strong></span>
                 <span class="shop-item-price"><strong>$10.99</strong></span>
             
@@ -478,13 +484,13 @@
 
 <div class=row style="padding-left: 25px">
 
-    <h5 class="tm-blue-text tm-section-title tm-margin-b-30"><strong>Beverage</strong></h5>
+    <h5 class="tm-blue-text tm-section-title tm-margin-b-30"><strong> &#127867 Beverage</strong></h5>
     
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <div class="hovereffect">
             <div class="shop-item">
                 <img class="shop-item-image" src="../static/img/app9.jpg" style="width: 120%">
-    
+                  <span class="shop-item-id"><strong>18</strong></span>
                   <span class="shop-item-title"><strong>Coke</strong></span>
                   <span class="shop-item-price"><strong>$2.99</strong></span>
               
@@ -505,7 +511,7 @@
         <div class="hovereffect">
             <div class="shop-item">
                 <img class="shop-item-image" src="../static/img/app10.jpg"" style="width: 110%">
-    
+                  <span class="shop-item-id"><strong>19</strong></span>
                   <span class="shop-item-title"><strong>Beer</strong></span>
                   <span class="shop-item-price"><strong>$4.99</strong></span>
               
@@ -525,7 +531,7 @@
         <div class="hovereffect">
             <div class="shop-item">
                 <img class="shop-item-image" src="../static/img/app11.jpg" style="width: 90%">
-    
+                  <span class="shop-item-id"><strong>20</strong></span>
                   <span class="shop-item-title"><strong>Japanese Green Tea</strong></span>
                   <span class="shop-item-price"><strong>$2.99</strong></span>
               
@@ -549,11 +555,11 @@
 <br>
 
 <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12" style="padding-left: 30px">
-    <h2 class="section-header"><strong>CART</strong></h2>
+    <h2 class="section-header"><strong>ORDER CART</strong></h2>
     <div class="cart-row">
-        <span class="cart-item cart-header cart-column">ITEM</span>
-        <span class="cart-price cart-header cart-column">PRICE</span>
-        <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+        <span class="cart-item cart-header cart-column">Item</span>
+        <span class="cart-price cart-header cart-column">Price</span>
+        <span class="cart-quantity cart-header cart-column">Quality</span>
     </div>
 
     <div class="cart-items">

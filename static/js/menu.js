@@ -61,7 +61,9 @@ function purchaseClicked() {
 
 
         // POST to server
-    fetch('/https://ricerest.herokuapp.com/cart', {
+        // fetch('/https://ricerest.herokuapp.com/cart'
+    
+    fetch('/cart', {
         method: 'POST',
         body: JSON.stringify(dict)
     }).then(function (response) { // At this point, Flask has printed our JSON
@@ -72,8 +74,8 @@ function purchaseClicked() {
         console.log(text);
     });
 
-    window.location.href = "https://ricerest.herokuapp.com/survey";
-    // window.location.href = "http://localhost:5000/cart";
+    // window.location.href = "https://ricerest.herokuapp.com/survey";
+    window.location.href = "http://localhost:5000/survey";
 }
 
 

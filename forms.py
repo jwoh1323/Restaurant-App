@@ -45,7 +45,7 @@ class SurveyForm(FlaskForm):
         choices=[('',''),('male','Male'),('female','Female')],
         validators=[DataRequired(),Length(min = 1)])
     ethnicity =  SelectField('Ethnicity',
-        choices=[('',''),('W','White'),('AA','African American'),('AI','Asian'),('HI','Hispanic'),('OT','Others')],
+        choices=[('',''),('WH','White'),('AA','African American'),('AS','Asian'),('HI','Hispanic'),('OT','Others')],
         validators=[DataRequired(),Length(min = 1)])
 
     age = IntegerField('Age',validators=[DataRequired()])
