@@ -27,7 +27,7 @@ mail = Mail(app)
 
 
 
-
+transaction_id = 1
 
 @app.route("/")
 @app.route("/home")
@@ -74,7 +74,8 @@ def survey():
         # qe.do_query(query_string)
         # qe.commit()
         # qe.disconnect()
-        print(sex,ethnicity,zipcode,age)
+        print(sex,ethnicity,zipcode,age,transaction_id)
+
         return "Thank you"
 
     return render_template('survey.html',form=form)
@@ -85,7 +86,8 @@ def cart():
     if request.method == 'POST':
         print('Incoming..')
         print(request.get_json(force=True))  # parse as JSON
-        return 'Done'
+
+        return redirect(url_for('survey'))
 
     # GET request
     else:
