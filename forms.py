@@ -41,6 +41,7 @@ class LoginForm(FlaskForm):
 
 
 class SurveyForm(FlaskForm):
+    first_name = StringField('First Name',validators=[DataRequired()])
     sex = SelectField('Gender', 
         choices=[('',''),('male','Male'),('female','Female')],
         validators=[DataRequired(),Length(min = 1)])

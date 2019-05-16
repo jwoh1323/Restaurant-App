@@ -16,3 +16,18 @@ def login_check(username, password):
   else:
     #print("wrong account")
     return False
+
+def transaction_check(transaction):
+  transaction_hist = []
+  qe.connect()
+  query_string = f"SELECT DISTINCT transanction_id FROM Transaction"
+  response = qe.do_query(query_string)
+  qe.disconnect()
+  for i in response:
+    transaction_hist.append(i[0])
+
+  if(transaction not in transaction_hist):
+    return True
+  else:
+    return False
+

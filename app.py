@@ -3,10 +3,12 @@ from forms import *
 import forms
 import pandas as pd
 import uuid
-import log_in_check
+import log_in_check as check
 import pymysql
 from QueryEngine import QueryEngine
 from flask_mail import Mail, Message
+from random import randint
+from datetime import datetime
 
 
 qe = QueryEngine()
@@ -27,7 +29,9 @@ mail = Mail(app)
 
 
 
-transaction_id = 1
+transaction_id = randint(10, 999999)
+
+
 
 @app.route("/")
 @app.route("/home")
@@ -49,7 +53,7 @@ def login():
     if form.validate_on_submit():
         username = form.user.data
         password = form.password.data
-        if log_in_check.login_check(username, password) == True:
+        if check.login_check(username, password) == True:
             return redirect(url_for('manager_view'))
         else:
             flash('Invalid Account, Check Your Username and Password', 'danger')
@@ -65,19 +69,21 @@ def manager_view():
 def survey():
     form = SurveyForm()
     if form.validate_on_submit():
+
+        global transaction_id
         sex = form.sex.data
         ethnicity = form.ethnicity.data
         zipcode = form.zipcode.data
         age = form.age.data
-        # qe.connect()
-        # query_string = f"INSERT  INTO log_in (UserName,Password_Hash) VALUES('{username}','{password}');"
-        # qe.do_query(query_string)
-        # qe.commit()
-        # qe.disconnect()
-        
-        print(sex,ethnicity,zipcode,age,transaction_id)
+        first_name = form.first_name.data
 
-        return "Thank you"
+        qe.connect()
+        query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
+        qe.do_query(query_string)
+        qe.commit()
+        qe.disconnect()
+
+        return redirect(url_for('menu'))
 
     return render_template('survey.html',form=form)
 
@@ -85,15 +91,32 @@ def survey():
 @app.route("/cart", methods=['GET', 'POST'])
 def cart():
     if request.method == 'POST':
-        print('Incoming..')
-        print(request.get_json(force=True))  # parse as JSON
+        response = request.get_json(force=True)  # parse as JSON
+        keys = list(response.keys())
 
+        time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        #check history transaction 
+        global transaction_id
+        transaction_id_exist_check = check.transaction_check(transaction_id)
+        while(transaction_id_exist_check == False):
+            transaction_id = randint(10, 999999)
+            transaction_id_exist_check = check.transaction_check(transaction_id)
+
+        transaction_id +=1
+
+        for i in range(len(keys)):
+            food_id = keys[i]
+            food_name = response[food_id][0]
+            quantity = response[food_id][1]
+            qe.connect()
+            query_string = f"INSERT INTO Transaction VALUES({transaction_id},{food_id},'{food_name}',{quantity},'{time}');"
+            qe.do_query(query_string)
+            qe.commit()
+            qe.disconnect()
+    else:
         return redirect(url_for('survey'))
 
-    # GET request
-    else:
-        message = {'greeting':'Hello from Flask!'}
-        return jsonify(message)  # serialize and use JSON headers
 
 if __name__ == '__main__':
     app.run(debug =True)
