@@ -41,7 +41,7 @@ class LoginForm(FlaskForm):
 
 
 class SurveyForm(FlaskForm):
-    sex = SelectField('Sex', 
+    sex = SelectField('Gender', 
         choices=[('',''),('male','Male'),('female','Female')],
         validators=[DataRequired(),Length(min = 1)])
     ethnicity =  SelectField('Ethnicity',

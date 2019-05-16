@@ -72,7 +72,8 @@ function purchaseClicked() {
         console.log(text);
     });
 
-    window.location.href = "http://localhost:5000/cart";
+    window.location.href = "/cart";
+    // window.location.href = "http://localhost:5000/cart";
 }
 
 
