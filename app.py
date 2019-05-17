@@ -30,7 +30,7 @@ mail = Mail(app)
 
 
 
-transaction_id = randint(10, 999999)
+transaction_id = 0
 
 
 @app.route("/",methods=['GET', 'POST'])
