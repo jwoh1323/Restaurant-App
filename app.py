@@ -82,8 +82,9 @@ def survey():
 def update_survey_data(first_name,sex,ethnicity,age,zipcode):
     global transaction_id
     transaction_id = transaction_id
+
     qe.connect()
-    query_string = f"INSERT INTO Survey VALUE({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
+    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
