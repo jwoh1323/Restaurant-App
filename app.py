@@ -31,7 +31,9 @@ mail = Mail(app)
 
 
 #check transaction ID
+global transaction_id
 transaction_id = 1000
+
 transaction_id_exist_check = check.transaction_check(transaction_id) #return true if already exisits
 while(transaction_id_exist_check):
     transaction_id = randint(100, 999999)
@@ -104,9 +106,9 @@ def cart():
         order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         #check history transaction 
-        global transaction_id
-        transaction_id = transaction_id
-        
+        # global transaction_id
+        # transaction_id = transaction_id
+
         for i in range(len(keys)):
             food_id = keys[i]
             food_name = response[food_id][0]
