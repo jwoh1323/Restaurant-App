@@ -73,8 +73,6 @@ def survey():
         if form.validate_on_submit():
             global transaction_id
             transaction_id = transaction_id
-            request.method == 'POST'
-
             first_name = form.first_name.data
             sex = form.sex.data
             ethnicity = form.ethnicity.data
@@ -86,9 +84,9 @@ def survey():
             qe.do_query(query_string)
             qe.commit()
             qe.disconnect()
+        return redirect(url_for('menu'))
     else:
         return render_template('survey.html',form=form)
-
 
 
 @app.route("/cart", methods=['GET', 'POST'])
