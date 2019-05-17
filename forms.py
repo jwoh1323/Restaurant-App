@@ -42,11 +42,8 @@ class LoginForm(FlaskForm):
 
 class SurveyForm(FlaskForm):
     first_name = StringField('First Name',validators=[DataRequired()])
-    sex = SelectField('Gender', 
-        choices=[('',''),('male','Male'),('female','Female')],
-        validators=[DataRequired(),Length(min = 1)])
-    ethnicity =  SelectField('Ethnicity',
-        choices=[('',''),('WH','White'),('AA','African American'),('AS','Asian'),('HI','Hispanic'),('OT','Others')],
+    sex = SelectField('Gender',choices=[('',''),('male','Male'),('female','Female')],validators=[DataRequired(),Length(min = 1)])
+    ethnicity =  SelectField('Ethnicity',choices=[('',''),('WH','White'),('AA','African American'),('AS','Asian'),('HI','Hispanic'),('OT','Others')],
         validators=[DataRequired(),Length(min = 1)])
 
     age = IntegerField('Age',validators=[DataRequired()])

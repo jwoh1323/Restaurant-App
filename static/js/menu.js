@@ -69,7 +69,7 @@ function purchaseClicked() {
         console.log(text);
     });
     
-    window.location.href = '/survey';
+    // window.location.href = '/survey';
 }
 
 

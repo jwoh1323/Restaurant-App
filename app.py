@@ -67,7 +67,6 @@ def manager_view():
 def survey():
     form = SurveyForm()
     if form.validate_on_submit():
-
         global transaction_id
         sex = form.sex.data
         ethnicity = form.ethnicity.data
