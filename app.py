@@ -79,16 +79,17 @@ def survey():
     return render_template('survey.html',form=form)
 
 
-@app.route("/update_survey_data/<first_name>/<sex>/<ethnicity>/<age>/<zipcode>", methods=['GET','POST'])
-def update_survey_data(first_name,sex,ethnicity,age,zipcode):
-    global transaction_id
-    transaction_id = transaction_id
+@app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['POST'])
+def update_survey_data(sex,ethnicity,age,zipcode,first_name):
+    if request.method == 'POST':
+        global transaction_id
+        transaction_id = transaction_id
 
-    qe.connect()
-    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
-    qe.do_query(query_string)
-    qe.commit()
-    qe.disconnect()
+        qe.connect()
+        query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
+        qe.do_query(query_string)
+        qe.commit()
+        qe.disconnect()
 
     return redirect(url_for('home'))
 
@@ -119,7 +120,6 @@ def cart():
             qe.disconnect()
     else:
         return redirect(url_for('survey'))
-
 
 if __name__ == '__main__':
     app.run()
