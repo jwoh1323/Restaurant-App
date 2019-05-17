@@ -51,7 +51,6 @@ def menu():
     global transaction_id
     while(check.transaction_check(transaction_id)):
         transaction_id = randint(100, 999999)
-    transaction_id = transaction_id
     
     return render_template('menu.html')
 
@@ -78,6 +77,7 @@ def manager_view():
 def survey():
     form = SurveyForm()
     if form.validate_on_submit():
+        global transaction_id
         first_name = form.first_name.data
         sex = form.sex.data
         ethnicity = form.ethnicity.data
