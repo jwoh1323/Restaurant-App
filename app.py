@@ -83,7 +83,8 @@ def survey():
         qe.commit()
         qe.disconnect()
 
-    
+        return redirect(url_for('survey'))
+
     return redirect(url_for('menu'))
 
 
