@@ -32,7 +32,7 @@ mail = Mail(app)
 
 
 global transaction_id
-
+transaction_id = 10000
 
 
 
