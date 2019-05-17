@@ -30,7 +30,7 @@ mail = Mail(app)
 
 
 
-transaction_id = 0
+transaction_id = 1000
 
 
 @app.route("/",methods=['GET', 'POST'])
@@ -99,7 +99,7 @@ def cart():
         global transaction_id
         transaction_id_exist_check = check.transaction_check(transaction_id)
         while(transaction_id_exist_check == False):
-            transaction_id = randint(10, 999999)
+            transaction_id = randint(100, 999999)
             transaction_id_exist_check = check.transaction_check(transaction_id)
 
         transaction_id = transaction_id
