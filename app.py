@@ -95,13 +95,12 @@ def update_survey_data(transaction_id,sex,ethnicity,age,zipcode,first_name):
 
 @app.route("/cart", methods=['GET', 'POST'])
 def cart():
+    global transaction_id
+    transaction_id = randint(10, 99999999)
     if request.method == 'POST':
         response = request.get_json(force=True)  # parse as JSON
         keys = list(response.keys())
         order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        global transaction_id
-        transaction_id = randint(10, 99999999)
-
         for i in range(len(keys)):
             food_id = keys[i]
             food_name = response[food_id][0]
