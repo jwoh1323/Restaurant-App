@@ -26,7 +26,7 @@ def transaction_check(transaction):
   for i in response:
     transaction_hist.append(i[0])
 
-  if(transaction not in transaction_hist):
+  if(transaction in transaction_hist):
     return True
   else:
     return False

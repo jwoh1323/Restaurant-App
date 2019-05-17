@@ -46,6 +46,8 @@ def contact():
 
 @app.route("/menu",methods=['GET', 'POST'])
 def menu():
+    global transaction_id
+    transaction_id = randint(100, 999999)
     transaction_id_exist_check = check.transaction_check(transaction_id) #return true if already exisits
     while(transaction_id_exist_check):
         transaction_id = randint(100, 999999)
