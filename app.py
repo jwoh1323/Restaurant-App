@@ -32,7 +32,6 @@ mail = Mail(app)
 
 #check transaction ID
 global transaction_id
-transaction_id = randint(10, 99999999)
 
 
 
@@ -49,6 +48,8 @@ def contact():
 
 @app.route("/menu",methods=['GET', 'POST'])
 def menu():
+    global transaction_id
+    transaction_id = randint(10, 99999999)
     return render_template('menu.html')
 
 
