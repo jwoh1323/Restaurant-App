@@ -8,6 +8,7 @@ import pymysql
 from QueryEngine import QueryEngine
 from flask_mail import Mail, Message
 from random2 import randint
+from datetime import datetime
 
 
 qe = QueryEngine()
@@ -94,6 +95,7 @@ def cart():
     if request.method == 'POST':
         response = request.get_json(force=True)  # parse as JSON
         keys = list(response.keys())
+        order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         #check history transaction 
         global transaction_id
@@ -110,7 +112,7 @@ def cart():
             food_name = response[food_id][0]
             quantity = response[food_id][1]
             qe.connect()
-            query_string = f"INSERT INTO Transaction VALUES({transaction_id},{food_id},'{food_name}',{quantity});"
+            query_string = f"INSERT INTO Transaction VALUES({transaction_id},{food_id},'{food_name}',{quantity},'{order_time}');"
             qe.do_query(query_string)
             qe.commit()
             qe.disconnect()
