@@ -87,7 +87,7 @@ def update_survey_data(first_name,sex,ethnicity,age,zipcode):
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
-    return redirect(url_for('menu'))
+    return redirect(url_for('home'))
 
 
 
@@ -104,7 +104,7 @@ def cart():
             transaction_id = randint(10, 999999)
             transaction_id_exist_check = check.transaction_check(transaction_id)
 
-
+        transaction_id = transaction_id + 1
         for i in range(len(keys)):
             food_id = keys[i]
             food_name = response[food_id][0]
