@@ -30,19 +30,11 @@ function ready() {
 function purchaseClicked() {
     alert('Thank you for your purchase')
     var cartItems = document.getElementsByClassName('cart-items')[0]
-
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
     var cartItemIDs = cartItems.getElementsByClassName('cart-item-id')
-    // var item_name = cartItemNames[0].innerText
-    // console.log(item_name)
 
 
     var cartRows = cartItems.getElementsByClassName('cart-row')
-
-    // var quantityElement = cartRows[0].getElementsByClassName('cart-quantity-input')[0]
-    // var item_quality = quantityElement.value
-    // console.log(item_quality)
-
     var dict = {}
 
     while (cartItems.hasChildNodes()) {
@@ -55,10 +47,8 @@ function purchaseClicked() {
         cartItems.removeChild(cartItems.firstChild)
     }
     updateCartTotal();
-        // POST to server
-        // fetch('/https://ricerest.herokuapp.com/cart'
 
-    fetch('/cart', {
+    fetch('http://ricerest.herokuapp.com/menu/cart', {
         method: 'POST',
         body: JSON.stringify(dict)
     }).then(function (response) {
@@ -69,7 +59,7 @@ function purchaseClicked() {
         console.log(text);
     });
     
-    window.location.href = '/survey';
+    window.location.href = 'http://ricerest.herokuapp.com/menu/survey';
 }
 
 
