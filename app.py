@@ -65,12 +65,10 @@ def manager_view():
     return render_template('manager_view.html')
 
 
-@app.route("/survey", methods=['GET','POST'])
-def survey():
+@app.route("/survey/<transaction_id>", methods=['GET','POST'])
+def survey(transaction_id):
     form = SurveyForm()
     if form.validate_on_submit():
-        global transaction_id
-        transaction_id = transaction_id
         first_name = form.first_name.data
         sex = form.sex.data
         ethnicity = form.ethnicity.data
@@ -83,11 +81,10 @@ def survey():
 @app.route("/update_survey_data/<transaction_id>/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
 def update_survey_data(transaction_id,sex,ethnicity,age,zipcode,first_name):
     qe.connect()
-    query_string = f"INSERT INTO Survey VALUES({transaction_id},{sex},{ethnicity},{age},{zipcode},{first_name});"
+    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
-
     return redirect(url_for('menu'))
 
 
@@ -105,6 +102,8 @@ def cart():
             transaction_id = randint(10, 999999)
             transaction_id_exist_check = check.transaction_check(transaction_id)
 
+        transaction_id = transaction_id
+
 
         for i in range(len(keys)):
             food_id = keys[i]
@@ -116,7 +115,7 @@ def cart():
             qe.commit()
             qe.disconnect()
     else:
-        return redirect(url_for('survey'))
+        return redirect(url_for('survey',transaction_id=transaction_id))
 
 if __name__ == '__main__':
     app.run()
