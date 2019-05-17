@@ -47,7 +47,11 @@ def contact():
     return render_template('contact.html')
 
 @app.route("/menu",methods=['GET', 'POST'])
-def menu():    
+def menu():
+    global transaction_id
+    if(check.transaction_check(transaction_id)):
+        transaction_id = randint(100, 9999999)
+
     return render_template('menu.html')
 
 
@@ -99,13 +103,6 @@ def cart():
         response = request.get_json(force=True)  # parse as JSON
         keys = list(response.keys())
         order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-        #check history transaction
-            
-        global transaction_id
-        while(check.transaction_check(transaction_id)):
-            transaction_id = randint(100, 9999999)
-            
 
         for i in range(len(keys)):
             food_id = keys[i]
