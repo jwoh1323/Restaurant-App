@@ -75,7 +75,7 @@ def survey(transaction_id):
         age = form.age.data
         zipcode = form.zipcode.data
         return redirect(url_for('update_survey_data',transaction_id=transaction_id,first_name=first_name,sex=sex,ethnicity=ethnicity,age=age,zipcode=zipcode))
-    return render_template('survey.html',form=form)
+    return render_template('survey.html',form=form,transaction_id=transaction_id)
 
 
 @app.route("/update_survey_data/<transaction_id>/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
