@@ -16,7 +16,7 @@ qe.setup_default()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a26ade032e7040309ba635818774a38b'
-app.config['JAWSDB_URL'] = 'mysql://zp7gk8hwnxf8pr7r:zkwvjqtasu7wl5ir@ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vrjw534e3pgu7qdo'
+app.config['JAWSDB_URL'] = 'mysql://zp7gk8hwnxf8pr7r:d177m20lgvc3tagd@ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vrjw534e3pgu7qdo'
 
 
 
@@ -28,11 +28,6 @@ app.config['MAIL_PASSWORD'] = "coscspring2019"
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-
-
-
-global transaction_id
-
 
 
 
@@ -77,30 +72,44 @@ def survey():
         ethnicity = form.ethnicity.data
         age = form.age.data
         zipcode = form.zipcode.data
-        return redirect(url_for('update_survey_data',first_name=first_name,sex=sex,ethnicity=ethnicity,age=age,zipcode=zipcode))
+
+        qe.connect()
+        query_string = f"INSERT INTO Survey(gender,ethnicity,age,zipcode,first_name) \
+                                    VALUES('{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
+        qe.do_query(query_string)
+        qe.commit()
+        qe.disconnect()
+        return redirect(url_for('menu'))
+        
     return render_template('survey.html',form=form)
 
 
-@app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
-def update_survey_data(sex,ethnicity,age,zipcode,first_name):
-    qe.connect()
-    query_string = f"UPDATE  Survey SET gender = '{sex}', ethnicity='{ethnicity}', age={age}, zipcode ={zipcode}, first_name = '{first_name}' \
-                                                WHERE transanction_id = {transanction_id};"
-    qe.do_query(query_string)
-    qe.commit()
-    qe.disconnect()
-    return redirect(url_for('home'))
+# @app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
+# def update_survey_data(sex,ethnicity,age,zipcode,first_name):
+#     qe.connect()
+#     query_string = f"INSERT INTO Survey(gender,ethnicity,age,zipcode,first_name) VALUES('{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
+#     qe.do_query(query_string)
+#     qe.commit()
+#     qe.disconnect()
+#     return redirect(url_for('home'))
 
 
 
 @app.route("/cart", methods=['GET', 'POST'])
 def cart():
-    global transaction_id
-    transaction_id = randint(10, 99999999)
     if request.method == 'POST':
         response = request.get_json(force=True)  # parse as JSON
         keys = list(response.keys())
         order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        #check history transaction 
+        transaction_id = randint(10, 999999)
+        transaction_id_exist_check = check.transaction_check(transaction_id)
+        while(transaction_id_exist_check):
+            transaction_id = randint(10, 999999)
+            transaction_id_exist_check = check.transaction_check(transaction_id)
+
+
         for i in range(len(keys)):
             food_id = keys[i]
             food_name = response[food_id][0]
@@ -111,17 +120,12 @@ def cart():
             qe.commit()
             qe.disconnect()
 
-            qe.connect()
-            query_string = f"INSERT INTO Survey(transanction_id) VALUES({transaction_id});"
-            qe.do_query(query_string)
-            qe.commit()
-            qe.disconnect()
-
-    else:
         return redirect(url_for('survey'))
+    else:
+        return redirect(url_for('menu'))
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
 
 
