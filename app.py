@@ -32,6 +32,7 @@ mail = Mail(app)
 
 #check transaction ID
 global transaction_id
+transaction_id = randint(100, 999999)
 
 
 @app.route("/",methods=['GET', 'POST'])
@@ -46,7 +47,6 @@ def contact():
 @app.route("/menu",methods=['GET', 'POST'])
 def menu():
     global transaction_id
-    transaction_id = randint(100, 999999)
     while(check.transaction_check(transaction_id)) #return true if already exisits
         transaction_id = randint(100, 999999)
 
