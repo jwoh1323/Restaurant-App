@@ -69,8 +69,8 @@ def manager_view():
     return render_template('manager_view.html')
 
 
-@app.route("/survey", methods=['GET','POST'])
-def survey():
+@app.route("/survey/<transaction_id>", methods=['GET','POST'])
+def survey(transaction_id):
     form = SurveyForm()
     if form.validate_on_submit():
         first_name = form.first_name.data
@@ -112,7 +112,7 @@ def cart():
             qe.commit()
             qe.disconnect()
     else:
-        return redirect(url_for('survey'))
+        return redirect(url_for('survey',transaction_id=transaction_id))
 
 if __name__ == '__main__':
     app.run()
