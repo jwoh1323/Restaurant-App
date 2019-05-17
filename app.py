@@ -15,6 +15,8 @@ qe.setup_default()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a26ade032e7040309ba635818774a38b'
+app.config['JAWSDB_URL'] = 'mysql://zp7gk8hwnxf8pr7r:zkwvjqtasu7wl5ir@ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vrjw534e3pgu7qdo'
+
 
 
 mail= Mail(app)
@@ -31,16 +33,16 @@ mail = Mail(app)
 transaction_id = randint(10, 999999)
 
 
-@app.route("/")
-@app.route("/home")
+@app.route("/",methods=['GET', 'POST'])
+@app.route("/home",methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
 
-@app.route("/contact")
+@app.route("/contact",methods=['GET', 'POST'])
 def contact():
     return render_template('contact.html')
 
-@app.route("/menu")
+@app.route("/menu",methods=['GET', 'POST'])
 def menu():
     return render_template('menu.html')
 
@@ -66,9 +68,10 @@ def manager_view():
 @app.route("/survey", methods=['GET', 'POST'])
 def survey():
     form = SurveyForm()
+    global transaction_id
+    transaction_id = transaction_id
+
     if form.validate_on_submit():
-        global transaction_id
-        transaction_id = transaction_id
         first_name = form.first_name.data
         sex = form.sex.data
         ethnicity = form.ethnicity.data
@@ -76,14 +79,13 @@ def survey():
         zipcode = form.zipcode.data
 
         qe.connect()
-        query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
+        query_string = f"INSERT INTO Survey VALUE({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
         qe.do_query(query_string)
         qe.commit()
         qe.disconnect()
         return redirect(url_for('menu'))
     else:
         return render_template('survey.html',form=form)
-
 
 
 @app.route("/cart", methods=['GET', 'POST'])
@@ -99,7 +101,6 @@ def cart():
             transaction_id = randint(10, 999999)
             transaction_id_exist_check = check.transaction_check(transaction_id)
 
-        transaction_id +=1
 
         for i in range(len(keys)):
             food_id = keys[i]
