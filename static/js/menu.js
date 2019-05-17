@@ -57,7 +57,11 @@ function purchaseClicked() {
     updateCartTotal()
         // POST to server
         // fetch('/https://ricerest.herokuapp.com/cart'
+<<<<<<< HEAD
     fetch('/https://ricerest.herokuapp.com/cart', {
+=======
+    fetch('https://ricerest.herokuapp.com/cart', {
+>>>>>>> e9788a90dcaf90fc656427e2932ed4a45acc6892
         method: 'POST',
         body: JSON.stringify(dict)
     }).then(function (response) {
