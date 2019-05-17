@@ -32,7 +32,7 @@ mail = Mail(app)
 
 #check transaction ID
 global transaction_id
-transaction_id = randint(100, 999999)
+transaction_id = randint(100, 999999999)
 
 
 
@@ -47,11 +47,7 @@ def contact():
     return render_template('contact.html')
 
 @app.route("/menu",methods=['GET', 'POST'])
-def menu():
-    global transaction_id
-    while(check.transaction_check(transaction_id)):
-        transaction_id = randint(100, 999999)
-    
+def menu():    
     return render_template('menu.html')
 
 
@@ -107,7 +103,6 @@ def cart():
 
         #check history transaction 
         global transaction_id
-        transaction_id = transaction_id
 
         for i in range(len(keys)):
             food_id = keys[i]
