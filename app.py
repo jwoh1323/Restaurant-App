@@ -8,8 +8,7 @@ import pymysql
 from QueryEngine import QueryEngine
 from flask_mail import Mail, Message
 from random2 import randint
-from io import StringIO
-import time
+
 
 qe = QueryEngine()
 qe.setup_default()
@@ -79,17 +78,16 @@ def survey():
     return render_template('survey.html',form=form)
 
 
-@app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['POST'])
+@app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
 def update_survey_data(sex,ethnicity,age,zipcode,first_name):
-    if request.method == 'POST':
-        global transaction_id
-        transaction_id = transaction_id
+    global transaction_id
+    transaction_id = transaction_id
 
-        qe.connect()
-        query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
-        qe.do_query(query_string)
-        qe.commit()
-        qe.disconnect()
+    qe.connect()
+    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
+    qe.do_query(query_string)
+    qe.commit()
+    qe.disconnect()
 
     return redirect(url_for('home'))
 
