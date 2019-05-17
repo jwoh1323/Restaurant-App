@@ -69,29 +69,26 @@ def manager_view():
 def survey():
     form = SurveyForm()
     if form.validate_on_submit():
-        return redirect(url_for('get_survey_data',form=form))
-    return render_template('survey.html',form=form)
-
-
-@app.route("/get_survey_data/<form>", methods=['GET','POST'])
-def get_survey_data(form):
-    # form = SurveyForm()
-    if request.method == 'POST':
-        # if form.validate_on_submit():
-        global transaction_id
-        transaction_id = transaction_id
         first_name = form.first_name.data
         sex = form.sex.data
         ethnicity = form.ethnicity.data
         age = form.age.data
         zipcode = form.zipcode.data
+        return redirect(url_for('get_survey_data',first_name=first_name,sex=sex,ethnicity=ethnicity,age=age,zipcode=zipcode))
+    return render_template('survey.html',form=form)
 
+
+@app.route("/get_survey_data/<first_name>/<sex>/<ethnicity>/<age>/<zipcode>", methods=['GET','POST'])
+def get_survey_data(first_name,sex,ethnicity,age,zipcode):
+    # form = SurveyForm()
+    if request.method == 'POST':
+        global transaction_id
+        transaction_id = transaction_id
         qe.connect()
         query_string = f"INSERT INTO Survey VALUE({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
         qe.do_query(query_string)
         qe.commit()
         qe.disconnect()
-
     else:
         return redirect(url_for('menu'))
 
