@@ -30,7 +30,7 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 
-#check transaction ID
+
 global transaction_id
 
 
@@ -48,8 +48,6 @@ def contact():
 
 @app.route("/menu",methods=['GET', 'POST'])
 def menu():
-    global transaction_id
-    transaction_id = randint(10, 99999999)
     return render_template('menu.html')
 
 
@@ -101,6 +99,8 @@ def cart():
         response = request.get_json(force=True)  # parse as JSON
         keys = list(response.keys())
         order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        global transaction_id
+        transaction_id = randint(10, 99999999)
 
         for i in range(len(keys)):
             food_id = keys[i]
