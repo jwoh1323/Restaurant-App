@@ -7,7 +7,7 @@ import log_in_check as check
 import pymysql
 from QueryEngine import QueryEngine
 from flask_mail import Mail, Message
-from random import randint
+from random2 import randint
 
 
 qe = QueryEngine()
