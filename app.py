@@ -114,11 +114,8 @@ def cart():
             qe.do_query(query_string)
             qe.commit()
             qe.disconnect()
-
-        return redirect(url_for('survey'))
     else:
-        form = SurveyForm()
-        return render_template('survey.html',form=form)
+        return redirect(url_for('survey'))
 
 
 if __name__ == '__main__':
