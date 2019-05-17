@@ -17,10 +17,25 @@
                     {% else %}
                         {{ form.first_name(class="form-control form-control-lg") }}
                     {% endif %}
-                    
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.sex.label(class="form-control-label") }}
+                            {% if form.sex.errors %}
+                                {{ form.sex(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.sex.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.sex(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
                         <div class="form-group">
                             {{ form.ethnicity.label(class="form-control-label") }}
                             {% if form.ethnicity.errors %}
@@ -35,7 +50,10 @@
                             {% endif %}
                         </div>
                     </div>
-                    
+                </div>
+
+
+                <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
                             {{ form.age.label(class="form-control-label") }}
@@ -48,25 +66,6 @@
                                 </div>
                             {% else %}
                                 {{ form.age(class="form-control form-control-lg") }}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            {{ form.sex.label(class="form-control-label") }}
-                            {% if form.sex.errors %}
-                                {{ form.sex(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.sex.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.sex(class="form-control form-control-lg") }}
                             {% endif %}
                         </div>
                     </div>

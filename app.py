@@ -68,21 +68,22 @@ def survey():
     form = SurveyForm()
     if form.validate_on_submit():
         global transaction_id
+        transaction_id = transaction_id
+        first_name = form.first_name.data
         sex = form.sex.data
         ethnicity = form.ethnicity.data
-        zipcode = form.zipcode.data
         age = form.age.data
-        first_name = form.first_name.data
+        zipcode = form.zipcode.data
 
         qe.connect()
         query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
         qe.do_query(query_string)
         qe.commit()
         qe.disconnect()
-
         return redirect(url_for('menu'))
+    else:
+        return render_template('survey.html',form=form)
 
-    return render_template('survey.html',form=form)
 
 
 @app.route("/cart", methods=['GET', 'POST'])
