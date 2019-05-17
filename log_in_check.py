@@ -20,7 +20,7 @@ def login_check(username, password):
 def transaction_check(transaction):
   transaction_hist = []
   qe.connect()
-  query_string = f"SELECT DISTINCT transanction_id FROM Transaction"
+  query_string = f"SELECT DISTINCT transanction_id FROM Transaction;"
   response = qe.do_query(query_string)
   qe.disconnect()
   for i in response:
