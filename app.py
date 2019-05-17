@@ -86,7 +86,7 @@ def update_survey_data(transaction_id,sex,ethnicity,age,zipcode,first_name):
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
-    return redirect(url_for('menu'))
+    return redirect(url_for('home'))
 
 
 
