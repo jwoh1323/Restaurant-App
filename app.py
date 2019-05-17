@@ -35,6 +35,8 @@ global transaction_id
 transaction_id = randint(100, 999999)
 
 
+
+
 @app.route("/",methods=['GET', 'POST'])
 @app.route("/home",methods=['GET', 'POST'])
 def home():
@@ -47,9 +49,10 @@ def contact():
 @app.route("/menu",methods=['GET', 'POST'])
 def menu():
     global transaction_id
-    while(check.transaction_check(transaction_id)) #return true if already exisits
+    while(check.transaction_check(transaction_id)):
         transaction_id = randint(100, 999999)
-
+    transaction_id = transaction_id
+    
     return render_template('menu.html')
 
 
@@ -103,8 +106,8 @@ def cart():
         order_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         #check history transaction 
-        # global transaction_id
-        # transaction_id = transaction_id
+        global transaction_id
+        transaction_id = transaction_id
 
         for i in range(len(keys)):
             food_id = keys[i]
