@@ -68,7 +68,14 @@ def manager_view():
 @app.route("/survey", methods=['GET','POST'])
 def survey():
     form = SurveyForm()
+    if form.validate_on_submit():
+        return redirect(url_for('get_survey_data',form=form))
+    return render_template('survey.html',form=form)
 
+
+@app.route("/get_survey_data/<form>", methods=['GET','POST'])
+def get_survey_data(form):
+    # form = SurveyForm()
     if request.method == 'POST':
         # if form.validate_on_submit():
         global transaction_id
@@ -84,8 +91,9 @@ def survey():
         qe.do_query(query_string)
         qe.commit()
         qe.disconnect()
+
     else:
-        return render_template('survey.html',form=form)
+        return redirect(url_for('menu'))
 
 
 
