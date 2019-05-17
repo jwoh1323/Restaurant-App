@@ -8,7 +8,7 @@ import pymysql
 from QueryEngine import QueryEngine
 from flask_mail import Mail, Message
 from random2 import randint
-
+from io import StringIO
 
 qe = QueryEngine()
 qe.setup_default()
@@ -84,9 +84,9 @@ def survey():
             qe.do_query(query_string)
             qe.commit()
             qe.disconnect()
-        return redirect(url_for('menu'))
     else:
         return render_template('survey.html',form=form)
+
 
 
 @app.route("/cart", methods=['GET', 'POST'])
