@@ -103,8 +103,7 @@ def cart():
         while(transaction_id_exist_check == False):
             transaction_id = randint(100, 999999)
             transaction_id_exist_check = check.transaction_check(transaction_id)
-
-        transaction_id = transaction_id
+            transaction_id = transaction_id
 
 
         for i in range(len(keys)):
