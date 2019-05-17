@@ -68,9 +68,11 @@ def manager_view():
 @app.route("/survey", methods=['GET','POST'])
 def survey():
     form = SurveyForm()
-    global transaction_id
-    transaction_id = transaction_id
     if form.validate_on_submit():
+        global transaction_id
+        transaction_id = transaction_id
+        request.method == 'POST'
+
         first_name = form.first_name.data
         sex = form.sex.data
         ethnicity = form.ethnicity.data
@@ -83,10 +85,9 @@ def survey():
         qe.commit()
         qe.disconnect()
 
-        return redirect(url_for('home'))
+        return "<h1>Thank you<h1>"
     else:
-        return render_template('survey.html', form=form)
-
+        return render_template('survey.html',form=form)
 
 
 
@@ -118,7 +119,7 @@ def cart():
 
 
 if __name__ == '__main__':
-    app.run(debug =True)
+    app.run()
 
 
 
