@@ -69,8 +69,8 @@ def manager_view():
     return render_template('manager_view.html')
 
 
-@app.route("/survey/<transaction_id>", methods=['GET','POST'])
-def survey(transaction_id):
+@app.route("/survey", methods=['GET','POST'])
+def survey():
     form = SurveyForm()
     if form.validate_on_submit():
         first_name = form.first_name.data
@@ -78,12 +78,12 @@ def survey(transaction_id):
         ethnicity = form.ethnicity.data
         age = form.age.data
         zipcode = form.zipcode.data
-        return redirect(url_for('update_survey_data',transaction_id=transaction_id,first_name=first_name,sex=sex,ethnicity=ethnicity,age=age,zipcode=zipcode))
+        return redirect(url_for('update_survey_data',first_name=first_name,sex=sex,ethnicity=ethnicity,age=age,zipcode=zipcode))
     return render_template('survey.html',form=form)
 
 
-@app.route("/update_survey_data/<transaction_id>/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
-def update_survey_data(transaction_id,sex,ethnicity,age,zipcode,first_name):
+@app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
+def update_survey_data(sex,ethnicity,age,zipcode,first_name):
     qe.connect()
     query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
     qe.do_query(query_string)
@@ -110,8 +110,15 @@ def cart():
             qe.do_query(query_string)
             qe.commit()
             qe.disconnect()
+
+            qe.connect()
+            query_string = f"INSERT INTO Survey(transanction_id) VALUES({transaction_id});"
+            qe.do_query(query_string)
+            qe.commit()
+            qe.disconnect()
+
     else:
-        return redirect(url_for('survey',transaction_id=transaction_id))
+        return redirect(url_for('survey'))
 
 if __name__ == '__main__':
     app.run()
