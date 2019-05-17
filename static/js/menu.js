@@ -58,7 +58,7 @@ function purchaseClicked() {
         // POST to server
         // fetch('/https://ricerest.herokuapp.com/cart'
 
-    fetch('/https://ricerest.herokuapp.com/cart', {
+    fetch('/cart', {
         method: 'POST',
         body: JSON.stringify(dict)
     }).then(function (response) {
@@ -69,7 +69,7 @@ function purchaseClicked() {
         console.log(text);
     });
     
-    window.location.href = 'https://ricerest.herokuapp.com/survey';
+    window.location.href = '/survey';
 }
 
 
