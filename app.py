@@ -9,6 +9,7 @@ from QueryEngine import QueryEngine
 from flask_mail import Mail, Message
 from random2 import randint
 from io import StringIO
+import time
 
 qe = QueryEngine()
 qe.setup_default()
@@ -88,6 +89,7 @@ def update_survey_data(first_name,sex,ethnicity,age,zipcode):
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
+    time.sleep(2)
     return redirect(url_for('home'))
 
 
