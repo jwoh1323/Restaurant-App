@@ -65,7 +65,7 @@ def manager_view():
     return render_template('manager_view.html')
 
 
-@app.route("/survey", methods=['GET', 'POST'])
+@app.route("/survey", methods=['GET','POST'])
 def survey():
     form = SurveyForm()
     global transaction_id
@@ -83,9 +83,9 @@ def survey():
         qe.commit()
         qe.disconnect()
 
-        return redirect(url_for('survey'))
-
-    return redirect(url_for('menu'))
+        return redirect(url_for('home'))
+    else:
+        return render_template('survey.html', form=form)
 
 
 
