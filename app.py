@@ -30,8 +30,14 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 
-
+#check transaction ID
 transaction_id = 1000
+transaction_id_exist_check = check.transaction_check(transaction_id) #return true if already exisits
+while(transaction_id_exist_check):
+    transaction_id = randint(100, 999999)
+    transaction_id_exist_check = check.transaction_check(transaction_id)
+    transaction_id = transaction_id
+
 
 
 @app.route("/",methods=['GET', 'POST'])
@@ -99,13 +105,8 @@ def cart():
 
         #check history transaction 
         global transaction_id
-        transaction_id_exist_check = check.transaction_check(transaction_id)
-        while(transaction_id_exist_check == False):
-            transaction_id = randint(100, 999999)
-            transaction_id_exist_check = check.transaction_check(transaction_id)
-            transaction_id = transaction_id
-
-
+        transaction_id = transaction_id
+        
         for i in range(len(keys)):
             food_id = keys[i]
             food_name = response[food_id][0]
