@@ -85,7 +85,8 @@ def survey():
 @app.route("/update_survey_data/<sex>/<ethnicity>/<age>/<zipcode>/<first_name>",methods=['GET','POST'])
 def update_survey_data(sex,ethnicity,age,zipcode,first_name):
     qe.connect()
-    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
+    query_string = f"UPDATE  Survey SET gender = '{sex}', ethnicity='{ethnicity}', age={age}, zipcode ={zipcode}, first_name = '{first_name}' \
+                                                WHERE transanction_id = {transanction_id};"
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
