@@ -85,11 +85,11 @@ def update_survey_data(first_name,sex,ethnicity,age,zipcode):
     transaction_id = transaction_id
 
     qe.connect()
-    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}');"
+    query_string = f"INSERT INTO Survey VALUES({transaction_id},'{sex}','{ethnicity}',{age},{zipcode},'{first_name}')"
     qe.do_query(query_string)
     qe.commit()
     qe.disconnect()
-    time.sleep(2)
+
     return redirect(url_for('home'))
 
 
