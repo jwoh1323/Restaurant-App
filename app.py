@@ -16,18 +16,8 @@ qe.setup_default()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a26ade032e7040309ba635818774a38b'
-app.config['JAWSDB_URL'] = 'mysql://zp7gk8hwnxf8pr7r:d177m20lgvc3tagd@ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vrjw534e3pgu7qdo'
+app.config['JAWSDB_URL'] = 'mysql://zp7gk8hwnxf8pr7r:flroo4tnh3pg2pl1@ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vrjw534e3pgu7qdo'
 
-
-
-mail= Mail(app)
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = "uhdatabase2019@gmail.com"
-app.config['MAIL_PASSWORD'] = "coscspring2019"
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-mail = Mail(app)
 
 
 

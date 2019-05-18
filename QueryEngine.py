@@ -15,7 +15,7 @@ class QueryEngine:
   def setup_default(self):
     self.host = "ctgplw90pifdso61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
     self.user = "zp7gk8hwnxf8pr7r"
-    self.password = "d177m20lgvc3tagd"
+    self.password = "flroo4tnh3pg2pl1"
     self.database = "vrjw534e3pgu7qdo"
 
   
