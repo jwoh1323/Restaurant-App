@@ -93,7 +93,20 @@ def survey():
 #     qe.disconnect()
 #     return redirect(url_for('home'))
 
+@app.route("/presentation", methods=['GET', 'POST'])
+def presentation():
+    return redirect("https://docs.google.com/presentation/d/1a4yvkCltQIFV3gebvXaQkMsHYrISS9xQNQg-WXjttIk/edit?ts=5cdf01ed#slide=id.gc6f80d1ff_0_23",code=302,Response=None)
 
+@app.route("/live_report", methods=['GET', 'POST'])
+def live_report():
+    return redirect("https://public.tableau.com/profile/jinwoo.oh#!/vizhome/FinalProject_15581403306490/LiveAnalysis",
+        code=302,Response=None)
+
+
+@app.route("/static_report", methods=['GET', 'POST'])
+def static_report():
+    return redirect("https://public.tableau.com/profile/jinwoo.oh#!/vizhome/FinalProject_15581403306490/StaticAnalysis",
+        code=302,Response=None)
 
 @app.route("/cart", methods=['GET', 'POST'])
 def cart():
